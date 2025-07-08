@@ -115,11 +115,13 @@ We enhanced the usefulness of the news article URLs in 3DLNews by adding attribu
 
 | Property          | Description | Example   |
 |-------------------|------------------------|-------------------------|
+| id              | Unique identifier for each unique news article | `cd9c1ca20a` |
 | link              | The URL of the local news article.| `https://www.adn.com/alaska-news/article/womans-death-montana-has-eerie-echoes-yakutat-killing/2009/01/23/`                  |
-| is_news_article      |  Indicates whether the link is filtered as a news article based on our filtering process.                                                                                                                | true        |
-| html_filename     | Filename with HTML content of the article.    | `HTML/AK/2009/3e21b4e350560f922993604b9a037793.html.gz`                                     |
-| publication_date  | Article publication date.   | `01/23/2009`                                          |
+| is_news_article      |  Indicates whether the link is filtered as a news article based [StorySniffer](https://palewi.re/docs/storysniffer/index.html).                                                                                                                | true        |
+| publication_date  | Article publication date. (This was extracted using [html_date](https://htmldate.readthedocs.io/en/latest/) Note: The year in the file path is based on the extraction logic and this is directly based on the article publication date)   | `2009-11-18`                                          |
 | title             | Title of the article. | `Woman's death in Montana has eerie echoes of Yakutat killing - Anchorage Daily News`  |
+| content             | Content of the article. | |
+| html_filename     | Filename with HTML content of the article.    | `HTML/AK/2009/3e21b4e350560f922993604b9a037793.html.gz`|
 | media_name        | Name of local media organization.    | `Alaska Dispatch News`                                       |
 | media_type        | Type of media source (*Newspaper* or *TV* or *Radio station* or *Broadcast*). "Broadcast" refers to either TV or radio stations.                           | `newspaper`                                           |
 | location          | Location of the media organization. This includes: US state, city, & latitude/longitude.  | <details><summary>location</summary><pre>{"state": "Alaska", "city": "Anchorage", "longitude": -149.87828, "latitude": 61.216799}</pre></details>  |
