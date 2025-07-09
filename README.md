@@ -176,7 +176,7 @@ For Twitter and Google directories, there are three main directories for each ne
 - **preprocessed_data:** Contains directories for each state. Within each state directory, there are jsonl.gz files for each year, which include data objects for each URL with metadata.
 - **HTML:** Contains the HTML content for each article for each state for each year, named with the hash value of each article URL.
 
-### 4. News Data Extractor
+### 4. News Data Extraction
    
 The news_extractor.py script can be used to extract filtered news article data from .jsonl.gz files (Google/Twitter) and saves them into a single CSV file per platform/media combination. It supports filtering by platform, media type, publication year, and selected metadata fields.
 
