@@ -16,7 +16,7 @@ def create_directory(directory_path):
             print(f"Error creating directory '{directory_path}': {e}")
 
 def process_preprocessed_file(input_file_path):
-    output_file_path = input_file_path.replace(preprocessed_dir, updated_preprocessed_dir).replace('preprocessed_', 'updated_preprocessed_')
+    output_file_path = input_file_path.replace(preprocessed_dir, updated_preprocessed_dir)
     
     # Check if the output file already exists to skip processing if it's already done
     if os.path.exists(output_file_path):
