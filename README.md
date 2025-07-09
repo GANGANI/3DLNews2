@@ -201,16 +201,16 @@ The news_extractor.py script can be used to extract filtered news article data f
     ```
     python extract_news_to_csv.py \
     --base_dir /path/to/data/3DLNews2 \
-    --fields link title content publication_date
+    --metadata link title content publication_date
     ```
   - Option 2: Full Command (with explicit filters)
     ```
     python extract_news_to_csv.py \
-    --base_dir /path/to/data/3DLNews2 \
+    --base-dir /path/to/data/3DLNews2 \
     --platforms Google Twitter \
-    --media_types newspaper radio tv broadcast \
+    --media-types newspaper radio tv broadcast \
     --years 2020 2021 2024 \
-    --fields title content publication_date link
+    --metadata title content publication_date link
     ```
 
 #### 4.3 Output Structure
@@ -221,14 +221,14 @@ The news_extractor.py script can be used to extract filtered news article data f
      results/
       ├── 1-Google/
       │   └── 1-Newspaper.csv
-      │   └── 2-Radio
-      │   └── 3-TV
-      │   └── 4-Broadcast    
+      │   └── 2-Radio.csv
+      │   └── 3-TV.csv
+      │   └── 4-Broadcast.csv    
       ├── 2-Twitter/
       │   └── 1-Newspaper.csv
-      │   └── 2-Radio
-      │   └── 3-TV
-      │   └── 4-Broadcast    
+      │   └── 2-Radio.csv
+      │   └── 3-TV.csv
+      │   └── 4-Broadcast.csv    
   ```
 
 #### 4.5 Notes
