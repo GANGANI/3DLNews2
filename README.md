@@ -184,11 +184,11 @@ The news_extractor.py script can be used to extract filtered news article data f
 
 | Argument         | Description                                                                                      | Default                                | Example                                                           |
 |------------------|--------------------------------------------------------------------------------------------------|----------------------------------------|-------------------------------------------------------------------|
-| `--base-dir`     | Root directory containing the `Google` and/or `Twitter` folders.                                | `.` (current directory)                | `--base_dir /path/to/data/3DLNews2`                              |
+| `--base-dir`     | Root directory containing the `Google` and/or `Twitter` folders.                                |                | `--base_dir /path/to/data/3DLNews2`                              |
 | `--platforms`    | List of platforms to include.                                                                   | `Google Twitter`                       | `--platforms Google Twitter`                                     |
 | `--media-types`  | Media types to process. Valid values: `newspaper`, `radio`, `tv`, `broadcast`.                  | All media types                        | `--media_types newspaper radio tv broadcast`                     |
 | `--years`        | Filter files by year (must be part of the filename).                                            | All years                              | `--years 2020 2021 2024`                                         |
-| `--metadata`       | Metadata fields to extract from each article. `id` and `file_path` are always included.         | `link`, `title`, `content`, `publication_date` | `--fields title content publication_date link`     |
+| `--metadata`       | Metadata fields to extract from each article. `id` and `file_path` are always included.         |  | `--metadata title content publication_date link`     |
 
 #### 4.2 Steps to Use
 
