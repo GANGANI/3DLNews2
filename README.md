@@ -206,12 +206,82 @@ For Twitter and Google directories, there are three main directories for each ne
 - **preprocessed_data:** Contains directories for each state. Within each state directory, there are jsonl.gz files for each year, which include data objects for each URL with metadata.
 - **HTML:** Contains the HTML content for each article for each state for each year, named with the hash value of each article URL.
 
-### 4. Filter News Articles
+### 4. News Data Extractor
    
-To extract news articles filtered using the specified approach outlined above, you can use the following provided script. 
+The news_extractor.py script can be used to extract filtered news article data from .jsonl.gz files (Google/Twitter) and saves them into a single CSV file per platform/media combination. It supports filtering by platform, media type, publication year, and selected metadata fields.
 
-- [Filter_news_articles.py](src/Preprocess/Filter_news_articles.py)
-  
+#### Command-Line Arguments
+
+| Argument         | Description                                                                                      | Default                                | Example                                                           |
+|------------------|--------------------------------------------------------------------------------------------------|----------------------------------------|-------------------------------------------------------------------|
+| `--base-dir`     | Root directory containing the `Google` and/or `Twitter` folders.                                | `.` (current directory)                | `--base_dir /path/to/data/3DLNews2`                              |
+| `--platforms`    | List of platforms to include.                                                                   | `Google Twitter`                       | `--platforms Google Twitter`                                     |
+| `--media-types`  | Media types to process. Valid values: `newspaper`, `radio`, `tv`, `broadcast`.                  | All media types                        | `--media_types newspaper radio tv broadcast`                     |
+| `--years`        | Filter files by year (must be part of the filename).                                            | All years                              | `--years 2020 2021 2024`                                         |
+| `--metadata`       | Metadata fields to extract from each article. `id` and `file_path` are always included.         | `link`, `title`, `content`, `publication_date` | `--fields title content publication_date link`     |
+
+#### Steps to Use
+
+**Step 1: Download the Dataset**
+  Download and extract the [3DLNews2](https://app.globus.org/file-manager?origin_id=e524969c-7dff-474c-899c-efddf8d15b83&origin_path=%2F) dataset to your local system.
+
+**Step 2: Run the Script**
+
+  - Option 1: Minimal Command (with default platforms/media types)
+    ```
+    python extract_news_to_csv.py \
+    --base_dir /path/to/data/3DLNews2 \
+    --fields link title content publication_date
+    ```
+  - Option 2: Full Command (with explicit filters)
+    ```
+    python extract_news_to_csv.py \
+    --base_dir /path/to/data/3DLNews2 \
+    --platforms Google Twitter \
+    --media_types newspaper radio tv broadcast \
+    --years 2020 2021 2024 \
+    --fields title content publication_date link
+    ```
+
+#### Output Structure
+
+  When the script runs successfully, it generates output in the `results/` directory as follows:
+  ```
+  output_csv/
+  ├── Google/
+  │   ├── newspaper.csv
+  │   ├── radio.csv
+  │   ├── tv.csv
+  │   └── broadcast.csv
+  ├── Twitter/
+  │   ├── newspaper.csv
+  │   ├── radio.csv
+  │   ├── tv.csv
+  │   └── broadcast.csv
+  ```
+Notes: 
+   - Fields id and file_path are always included.
+   - If you want to have all data, just execute 1st option with required metadata feilds. Your output will be as follows
+     ```
+     output_csv/
+      ├── 1-Google/
+      │   └── 1-Newspaper.csv
+      │   └── 2-Radio
+      │   └── 3-TV
+      │   └── 4-Broadcast    
+      ├── 2-Twitter/
+      │   └── 1-Newspaper.csv
+      │   └── 2-Radio
+      │   └── 3-TV
+      │   └── 4-Broadcast    
+      ```
+#### Notes
+  - Fields `id` and `file_path` are **always included** in the CSV output.
+  - You can mix and match filters (--years, --media_types, etc.) depending on your use case.
+  - If no filters are provided, all available articles will be processed.
+  - This script expects the directory structure and filenames to follow the 3DLNews2 dataset format.
+  - **This is just a sample utility to help you extract data. Feel free to customize or extend the code based on your specific research or project needs.**
+
 ### 5. Potential Applications of 3DLNews Dataset
 - Exploring the Nationalization of Local News
 - Media Bias Analysis
