@@ -197,7 +197,7 @@ The news_extractor.py script can be used to extract filtered news article data f
 
 **Step 2: Run the Script**
 
-  - Option 1: Minimal Command (with default platforms/media types)
+  - Option 1: Minimal Command 
     ```
     python extract_news_to_csv.py \
     --base_dir /path/to/data/3DLNews2 \
