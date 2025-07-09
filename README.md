@@ -62,37 +62,7 @@ We issued Google and Twitter search queries to their respective search engines a
 
 ### 3.2 Data Filtering
 
-The collected URLs from Google and Twitter scraping could include both news and non-news article links. Below, we outline our filtering process for removing non-news article URLs from 3DLNews. Since there is no universal standard URL format for news articles, we have also provided access to the raw data, allowing researchers to implement their own filtering methods. Our process was informed by an experiment in which we developed a gold-standard dataset of news article URLs to understand two key properties: **path depth** and **word-boundary**.
-
-- **Path Depth**: The path depth of a URL refers to the number of hierarchies in its path property. For example:
-  - `https://example.com/` has a path depth of 0.
-  - `https://example.com/foo` has a path depth of 1.
-  - `https://example.com/foo/bar` has a path depth of 2.
-  
-- **Word-Boundary**: A word-boundary is a symbol that separates words in a URL. For example:
-  - In the URL `https://example.com/this-is-a-page`, the word-boundary is `-`.
-
-### Filtering Process
-
-The filtering process consisted of the following steps:
-
-1. **Dereferencing URLs**: 
-   - All URLs were dereferenced to resolve redirects and retrieve their final representations.
-
-2. **Domain Matching**:
-   - Links with domains not present in our local news media dataset were discarded.
-
-3. **Normalization**:
-   - URLs were converted to lowercase, trailing slashes were removed, and duplicates were eliminated.
-
-4. **Path Depth Filtering**:
-   - URLs with a path depth of 0 (typically homepages) were removed.
-   - All URLs with a path depth of 3 or greater were retained.
-
-5. **Word-Boundary Filtering**:
-   - URLs with a path depth of less than 3 were retained if they contained popular word-boundary separators such as `-`, `_`, or `.`.
-   - For example: `http://kwgs.org/post/funeral-set-ou-quarterback-killed-crash`.
-
+The collected URLs from Google and Twitter scraping could include both news and non-news article links. We used [storysniffer](https://palewi.re/docs/storysniffer/index.html) for removing non-news article URLs from 3DLNews. Since there is no universal standard URL format for news articles, we have also provided access to the raw data, allowing researchers to implement their own filtering methods. 
 
 Table 2 presents the number of links collected from Google and Twitter scrapping for all four media types and number of news articles after filtering.
 
