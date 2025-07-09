@@ -216,7 +216,8 @@ The news_extractor.py script can be used to extract filtered news article data f
 #### 4.3 Output Structure
 
   When the script runs successfully, it generates output in the `results/` directory as follows:
-     ```
+  
+  ```
      results/
       ├── 1-Google/
       │   └── 1-Newspaper.csv
@@ -228,7 +229,8 @@ The news_extractor.py script can be used to extract filtered news article data f
       │   └── 2-Radio
       │   └── 3-TV
       │   └── 4-Broadcast    
-      ```
+  ```
+
 #### 4.5 Notes
   - Fields `id` and `file_path` are **always included** in the CSV output.
   - You can mix and match filters (--years, --media_types, etc.) depending on your use case.
